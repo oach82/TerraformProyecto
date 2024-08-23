@@ -4,7 +4,7 @@ resource "aws_db_instance" "default" {
   db_name                 = "bdvitalpbx"
   engine               = "mysql"
   engine_version       = "8.0"
-  instance_class       = "db.t2.micro"
+  instance_class       = "db.t3.micro"
   username             = "admin"
   password             = "p4ssw0rd"  
   vpc_security_group_ids = [aws_security_group.sg_vitalpbx.id]
@@ -15,8 +15,8 @@ resource "aws_db_instance" "default" {
     }
 }
 
-
 # Salida de la URL de conexión de la base de datos
 output "db_endpoint" {
   value = aws_db_instance.default.endpoint
 }
+

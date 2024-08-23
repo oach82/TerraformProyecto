@@ -14,15 +14,6 @@ resource "aws_instance" "terraform" {
 
 }
 
-/*resource "aws_security_group_rule" "ec2_to_db" {
-  type        = "ingress"
-  from_port   = 3306  # MySQL port
-  to_port     = 3306
-  protocol    = "tcp"
-  security_group_id = aws_security_group.sg_rds_vitalpbx.id  # RDS security group
-  source_security_group_id = aws_security_group.sg_vitalpbx.id
-}*/
-
 output "ec2_public_ip_vitalpbx" {
   description = "La dirección IP pública Servidor VitalPBX"
   value       = aws_instance.terraform.public_ip

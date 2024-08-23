@@ -52,9 +52,18 @@ resource "aws_security_group" "sg_vitalpbx" {
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "vitalpbx-subnet-group"
-  subnet_ids = [aws_subnet.vitalpbx_subnet_privada.id ]  #if multi AZ add another subnet
+  subnet_ids = [
+    aws_subnet.vitalpbx_subnet.id,        # Asegúrate de que ambas subredes estén aquí
+    aws_subnet.vitalpbx_subnet_privada.id  # Asegúrate de que ambas subredes estén aquí
+  ]
+
+  tags = {
+    Name = "vitalpbx RDS Subnet Group"
+  }
 }
 
+
+ 
 resource "aws_security_group" "sg_rds_vitalpbx" {
   name        = "vitalpbx-db-sg"
   vpc_id = aws_vpc.vitalpbx.id

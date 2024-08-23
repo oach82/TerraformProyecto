@@ -10,7 +10,7 @@ resource "aws_vpc" "vitalpbx" {
 resource "aws_subnet" "vitalpbx_subnet" {
   vpc_id            = aws_vpc.vitalpbx.id
   cidr_block        = "172.31.36.0/28"
-  availability_zone = "us-east-2b"
+  availability_zone = "us-east-2a"
 
   tags = {
     Name = "vitalpbx SUBNET"
